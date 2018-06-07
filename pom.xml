@@ -4,15 +4,20 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.terryrao</groupId>
     <artifactId>shiro-spring-boot-aggregator</artifactId>
-    <version>${reversion}</version>
+    <version>${revision}</version>
     <packaging>pom</packaging>
     <description>shiro spring boot bulid</description>
-    
-    
+
+
     <properties>
-		  <revision>1.0.0-SNAPSHOT</revision>
-		  <main.basedir>${basedir}</main.basedir>
-	   </properties>
-     
-     
+        <revision>1.0.0-SNAPSHOT</revision>
+        <main.basedir>${basedir}</main.basedir>
+    </properties>
+
+    <modules>
+        <module>shiro-redis</module>
+        <module>shiro-spring-dependencies</module>
+    </modules>
+
+
 </project>
