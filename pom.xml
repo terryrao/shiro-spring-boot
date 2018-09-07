@@ -6,17 +6,18 @@
     <artifactId>shiro-spring-boot-aggregator</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
-    <description>shiro spring boot bulid</description>
+    <description>shiro spring boot build</description>
 
 
     <properties>
         <revision>1.0.0-SNAPSHOT</revision>
-        <main.basedir>${basedir}</main.basedir>
+        <!--<main.basedir>${basedir}../..</main.basedir>-->
     </properties>
 
     <modules>
         <module>shiro-redis</module>
         <module>shiro-spring-dependencies</module>
+        <module>framework</module>
     </modules>
 
 
