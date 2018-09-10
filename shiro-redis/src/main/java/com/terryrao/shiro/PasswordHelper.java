@@ -4,6 +4,8 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.UnixCrypt;
 import org.apache.commons.lang3.StringUtils;
 
+import java.util.Optional;
+
 public class PasswordHelper {
 
 	// private static String algorithmName = "md5";
@@ -25,10 +27,10 @@ public class PasswordHelper {
 	 * 
 	 */
 	public static boolean checkPasswordIsSimple(String password) {
-		if (StringUtils.isBlank(password)) {
-			return true;
-		}
-		return !password.matches("^(?![a-zA-z]+$)(?!\\d+$)(?![!@#$.%^&*]+$)[a-zA-Z\\d!@#$%^&*]{6,}$");// （包含字母和数字）
+		// （包含字母和数字）
+		return Optional.ofNullable(password).filter(StringUtils::isNotBlank)
+				.map(p -> !p.matches("^(?![a-zA-z]+$)(?!\\d+$)(?![!@#$.%^&*]+$)[a-zA-Z\\d!@#$%^&*]{6,}$"))
+				.orElse(true);
 	}
 
 	/**

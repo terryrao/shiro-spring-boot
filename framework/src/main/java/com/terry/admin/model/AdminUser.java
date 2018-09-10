@@ -33,7 +33,7 @@ public class AdminUser implements Serializable {
 
 
     public Set<String> getRoleIdSet(){
-        return Sets.newHashSet(Optional.ofNullable(this.getOrgId())
+        return Sets.newHashSet(Optional.ofNullable(this.getRoleId())
                 .map(ids -> Lists.newArrayList(ids.split(",")))
                 .orElse(Lists.newArrayList()));
     }

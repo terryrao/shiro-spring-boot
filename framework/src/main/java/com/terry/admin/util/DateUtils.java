@@ -19,4 +19,8 @@ public class DateUtils {
 
         return yyyy_MM_ss_dft.parseDateTime(DateTime.now().toString(yyyy_MM_ss_dft)).toDate();
     }
+
+    public static String todayStr() {
+        return DateTime.now().toString(yyyy_MM_ss_dft);
+    }
 }
