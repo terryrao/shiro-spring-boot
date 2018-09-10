@@ -27,6 +27,7 @@
         <org.apache.commons-collections4>4.1</org.apache.commons-collections4>
         <pagehelper.version>1.2.5</pagehelper.version>
         <jcapthcha.version>1.0</jcapthcha.version>
+        <joda.time.version>2.9.9</joda.time.version>
     </properties>
 
     <dependencyManagement>
@@ -139,6 +140,12 @@
                 <groupId>com.terryrao</groupId>
                 <artifactId>framework</artifactId>
                 <version>${w.project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>joda-time</groupId>
+                <artifactId>joda-time</artifactId>
+                <version>${joda.time.version}</version>
             </dependency>
 
         </dependencies>

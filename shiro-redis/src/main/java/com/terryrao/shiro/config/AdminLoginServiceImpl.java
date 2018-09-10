@@ -1,5 +1,12 @@
 package com.terryrao.shiro.config;
 
+import com.terry.admin.model.AdminLoginLog;
+import com.terry.admin.model.AdminPermission;
+import com.terry.admin.model.AdminUser;
+import com.terry.admin.service.AdminLoginLogService;
+import com.terry.admin.service.AdminPermissionService;
+import com.terry.admin.service.AdminRoleService;
+import com.terry.admin.service.AdminUserService;
 import com.terryrao.shiro.AdminLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,38 +17,34 @@ import java.util.List;
  * 本地 admin登录服务实现类
  */
 
-@Service("AdminLoginService")
+@Service("adminLoginService")
 public class AdminLoginServiceImpl implements AdminLoginService {
     @Autowired
-    private AdminServiceApi adminServiceApi;
+    private AdminUserService adminUserService;
     @Autowired
-    private RoleServiceApi roleServiceApi;
+    private AdminRoleService adminRoleService;
     @Autowired
-    private SysLoginLogServiceApi sysLoginLogServiceApi;
+    private AdminLoginLogService adminLoginLogService;
     @Autowired
-    private SysLogServiceApi sysLogServiceApi;
+    private AdminPermissionService adminPermissionService;
 
     @Override
-    public AdminRoleVo findAdminRoleVoByName(String adminName) {
-        return this.adminServiceApi.findAdminRoleVoByName(adminName);
+    public AdminUser findByName(String adminName) {
+        return this.adminUserService.findByName(adminName);
     }
 
     @Override
-    public List<SysPermission> findSysRolePermissionByRoleNo(String roleId) {
-        return this.roleServiceApi.findSysRolePermissionByRoleNo(roleId);
+    public List<AdminPermission> listPermissionsByRoleId(String roleId) {
+        return this.adminPermissionService.listByRoleId(roleId);
     }
 
-    @Override
-    public SysAdmin findSysAdminByName(String adminName) {
-        return adminServiceApi.findSysAdminByName(adminName);
-    }
 
     @Override
     public boolean lockAdmin(String adminNo) {
-        return adminServiceApi.lockAdmin(adminNo);
+        return this.adminUserService.lock(adminNo);
     }
 
-    @Override
+   /* @Override
     public boolean saveLoginLog(ShiroUser user, String ip) {
 
         SysLog syslog = new SysLog();
@@ -52,10 +55,11 @@ public class AdminLoginServiceImpl implements AdminLoginService {
         syslog.setRealName(user.getRealName());
         syslog.setReqIp(ip);
         return this.sysLogServiceApi.saveLoginLog(syslog);
-    }
+    }*/
 
     @Override
-    public boolean saveSysLoginLog(SysLoginLog sysLoginLog) {
-        return this.sysLoginLogServiceApi.save(sysLoginLog);
+    public boolean saveSysLoginLog(AdminLoginLog sysLoginLog) {
+        this.adminLoginLogService.add(sysLoginLog);
+        return true;
     }
 }

@@ -19,4 +19,8 @@ public class AdminPermission {
     private String status;
     private String type;//类型MENU BUTTON 按钮
     private String sort;//排序
+
+    //query
+    private String roleId;
+
 }

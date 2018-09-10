@@ -1,10 +1,10 @@
 package com.terryrao.shiro.config;
 
 
-import com.tx.sa.shiro.*;
-import com.tx.sa.shiro.cache.RedisSessionConfig;
-import com.tx.sa.shiro.cache.ShiroSessionDao;
-import com.tx.sa.shiro.cache.local.EhCacheCacheConfig;
+import com.terryrao.shiro.*;
+import com.terryrao.shiro.cache.RedisSessionConfig;
+import com.terryrao.shiro.cache.ShiroSessionDao;
+import com.terryrao.shiro.cache.local.EhCacheCacheConfig;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
@@ -19,6 +19,7 @@ import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
+import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.web.servlet.Cookie;
 import org.apache.shiro.web.servlet.SimpleCookie;
 import org.apache.shiro.web.session.mgt.DefaultWebSessionManager;
@@ -43,14 +44,11 @@ import java.util.Map;
  * shiro 配置相关
  */
 @Configuration
-@ConditionalOnClass({SecurityManager.class,AuthorizingRealm.class})
+@ConditionalOnClass({SecurityManager.class, AuthorizingRealm.class})
 @EnableConfigurationProperties(ShiroProperties.class)
-@AutoConfigureAfter({EhCacheCacheConfig.class,RedisSessionConfig.class})
+@AutoConfigureAfter({EhCacheCacheConfig.class, RedisSessionConfig.class})
 @Import(ShiroInterceptorConfig.class)
 public class ShiroConfig {
-
-
-
 
 
     @Bean(name = "credentialsMatcher")
@@ -205,15 +203,10 @@ public class ShiroConfig {
         filters.put("/lib/**", "anon");
         filters.put("/favicon.ico", "anon");
         filters.put("/txjcaptcha.svl", "anon");
-        filters.put("/api/**", "anon");
-        filters.put("/rmi/**", "anon");
         filters.put("/org/agreement/**", "anon");
         filters.put("/repayment/settle-advice*", "anon");
         filters.put("/repayment/mediacy-advice*", "anon");
         filters.put("/accFund/*Callback", "anon");
-        filters.put("/org/*Callback", "anon");
-        filters.put("/recharge/*Callback", "anon");
-        filters.put("/depositeNotify/*", "anon");
         filters.put("/login", "authc");
         filters.put("/logout", "logout");
         filters.put("/file/upload", "user");
@@ -223,7 +216,7 @@ public class ShiroConfig {
 
     @Bean
     public FilterRegistrationBean shiroFilterRegistration() {
-        FilterRegistrationBean registration = new FilterRegistrationBean();
+        FilterRegistrationBean<DelegatingFilterProxy> registration = new FilterRegistrationBean<>();
         registration.setFilter(new DelegatingFilterProxy());
         registration.addUrlPatterns("/*");
         registration.setDispatcherTypes(DispatcherType.REQUEST);
@@ -232,7 +225,6 @@ public class ShiroConfig {
 //        registration.setOrder(1);
         return registration;
     }
-
 
 
 }

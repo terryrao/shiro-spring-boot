@@ -1,5 +1,6 @@
 package com.terryrao.shiro;
 
+import com.terryrao.shiro.constant.Constants;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.codec.digest.UnixCrypt;
 import org.apache.shiro.authc.AuthenticationInfo;
@@ -7,6 +8,7 @@ import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.ExcessiveAttemptsException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +31,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
     @Override
     public boolean doCredentialsMatch(AuthenticationToken token, AuthenticationInfo info) {
         String username = (String) token.getPrincipal();
-        String key = Constant.ADMIN_ERRER_TIMES_ + DateUtils.currentDate();
+        String key = Constants.ADMIN_ERRER_TIMES_ + DateTime.now().toString()
         //禁用用户
         SysAdmin sysAdminInDb = adminLoginService.findSysAdminByName(username);
         String adminNo = sysAdminInDb.getAdminNo();

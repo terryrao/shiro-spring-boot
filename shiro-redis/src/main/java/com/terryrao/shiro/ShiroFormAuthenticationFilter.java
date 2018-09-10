@@ -1,5 +1,7 @@
 package com.terryrao.shiro;
 
+import com.terry.admin.model.AdminLoginLog;
+import com.terry.admin.util.IpUtils;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -19,10 +21,7 @@ import java.util.Date;
 
 /**
  * shiro表单过滤器扩展(增加验证码、记录日志)
- * 2015 2015年6月26日
  *
- * @author liuwenbin
- * @since 1.0
  */
 public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -58,22 +57,14 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
 
     }
 
-    protected AuthenticationToken createToken(
-
-            ServletRequest request, ServletResponse response) {
-
+    protected AuthenticationToken createToken(ServletRequest request, ServletResponse response) {
         String username = getUsername(request);
-
         String password = getPassword(request);
         password = StringUtils.isBlank(password) ? "" : password;
-
         String captcha = getCaptcha(request);
         captcha = StringUtils.isBlank(captcha) ? "" : captcha;
-
         String host = getHost(request);
-
         return new UsernamePasswordCaptchaToken(username, password.toCharArray(), host, captcha);
-
     }
 
     @Override
@@ -83,12 +74,9 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
         HttpSession session = request.getSession(false);
         ShiroUser shiro = (ShiroUser) subject.getPrincipal();
         session.setAttribute(Constants.CURRENT_USER, shiro);
-        session.setAttribute(Constants.SESSION_IS_ADMIN, StringUtils.isBlank(shiro.getOrgId()));
         this.addLog(request, shiro);
-        ShiroUser user = (ShiroUser) request.getSession(false).getAttribute(Constant.CURRENT_USER);
-        String clientIP = IPUtil.getClientIP(request);
-        adminLoginService.saveLoginLog(user, clientIP); // 登录成功记录日志
         WebUtils.issueRedirect(request, servletResponse, getSuccessUrl());
+
         return false;
     }
 
@@ -99,19 +87,15 @@ public class ShiroFormAuthenticationFilter extends FormAuthenticationFilter {
         return super.onLoginFailure(token, e, request, response);
     }
 
-    private void addLog(ServletRequest request, ShiroUser shiro) {
-        HttpServletRequest req = (HttpServletRequest) request;
-        SysLoginLog sysLoginLog = new SysLoginLog();
-        String[] browser = IpAddressUtil.getBrowser(req);
+    private void addLog(HttpServletRequest request, ShiroUser shiro) {
+        HttpServletRequest req = request;
+        AdminLoginLog sysLoginLog = new AdminLoginLog();
         sysLoginLog.setAdminNo(shiro.getAdminNo());
         sysLoginLog.setAdminName(shiro.getRealName());
-        sysLoginLog.setLoginBrowser(browser[0]);
-        sysLoginLog.setLoginDevice(browser[1]);
-        sysLoginLog.setLoginIp(IpAddressUtil.getIpAddr(req));
-        String addr = IpAddressUtil.getAddressByIp(sysLoginLog.getLoginIp());
-        if (addr != null)
-            sysLoginLog.setLoginAdrr(addr);
+        sysLoginLog.setLoginIp(IpUtils.getIpAddr(req));
         sysLoginLog.setLoginTime(new Date());
+        String clientIP = IpUtils.getClientIP(request);
+        sysLoginLog.setLoginIp(clientIP);
         try {
             adminLoginService.saveSysLoginLog(sysLoginLog);
         } catch (Exception e) {

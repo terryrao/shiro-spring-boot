@@ -8,7 +8,7 @@ public interface BasicMapper<T> {
 
     List<T> list(T condition);
 
-    int udpate(T upd);
+    int update(T upd);
 
     int delete(T del);
 }

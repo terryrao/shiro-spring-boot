@@ -6,7 +6,6 @@ import com.terry.admin.model.AdminUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -14,12 +13,13 @@ import java.io.Serializable;
 @Setter
 @NoArgsConstructor
 public class ShiroUser implements Serializable {
-    private static final long serialVersionUID = -987494180888127371L;
+
     private String username;
     private String adminNo;
     private String realName;
     private String roleId;
     private String password;
+    private boolean isSimple;
 
     public ShiroUser(AdminUser adminUser) {
         username = adminUser.getName();
