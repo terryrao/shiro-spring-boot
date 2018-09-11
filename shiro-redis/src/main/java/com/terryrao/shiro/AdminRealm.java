@@ -6,6 +6,7 @@ import com.octo.captcha.service.image.ImageCaptchaService;
 import com.terry.admin.enums.UserStatus;
 import com.terry.admin.model.AdminPermission;
 import com.terry.admin.model.AdminUser;
+import com.terryrao.shiro.cache.local.EhcacheName;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.*;
@@ -46,7 +47,7 @@ public class AdminRealm extends AuthorizingRealm {
         Set<String> roleSet = adminUser.getRoleIdSet();
         authorizationInfo.setRoles(roleSet);//设置角色
         List<AdminPermission> permissions = adminLoginService.listPermissionsByRoleId(adminUser.getRoleId());//查询权限拥有的菜单
-        Cache<String, Set<String>> menusCache = getCacheManager().getCache("shiro-user-menus");
+        Cache<String, Set<String>> menusCache = getCacheManager().getCache(EhcacheName.SHIRO_USER_MENUS.getCacheKey());
         menusCache.put(adminUser.getAdminNo() + Constants.CURRENT_USER_MENUS, getMenuSet(permissions, "menus"));//放入缓存
         authorizationInfo.setStringPermissions(getMenuSet(permissions, "permissions"));//设置菜单权限
         return authorizationInfo;
@@ -89,7 +90,7 @@ public class AdminRealm extends AuthorizingRealm {
         );
         //缓存
         try {
-            Cache<String, AdminUser> userCache = getCacheManager().getCache("shiro-user");
+            Cache<String, AdminUser> userCache = getCacheManager().getCache(EhcacheName.SHIRO_USER.getCacheKey());
             userCache.put(adminUser.getAdminNo() + Constants.CURRENT_USER, adminUser);
         } catch (Exception e) {
             e.printStackTrace();

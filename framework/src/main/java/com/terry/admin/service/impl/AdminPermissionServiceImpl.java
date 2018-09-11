@@ -5,6 +5,7 @@ import com.terry.admin.dao.AdminPermissionDao;
 import com.terry.admin.model.AdminPermission;
 import com.terry.admin.service.AdminPermissionService;
 import com.terry.admin.util.PageUtils;
+import com.terry.admin.vo.MenuTree;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,5 +45,12 @@ public class AdminPermissionServiceImpl implements AdminPermissionService {
         AdminPermission condition = new AdminPermission();
         condition.setRoleId(roleId);
         return this.adminPermissionDao.list(condition);
+    }
+
+    @Override
+    public MenuTree listAllByRoleId(String roleId) {
+        List<AdminPermission> list = this.listByRoleId(roleId);
+        MenuTree menuTree = new MenuTree();
+        return menuTree.createTree(list);
     }
 }

@@ -23,10 +23,6 @@ import java.io.IOException;
 
 /**
  * 提供验证码图片的Servlet
- *
- * @author kinjoYang
- * @version 1.0 2013年11月28日
- * @since 1.0
  */
 public class JcaptchaServlet extends HttpServlet {
 

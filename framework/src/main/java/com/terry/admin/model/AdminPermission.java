@@ -4,10 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
 import java.util.Date;
 
 @Setter@Getter@NoArgsConstructor
-public class AdminPermission {
+
+public class AdminPermission implements Serializable {
     private Long id; //
     private String permissionNo; // 菜单编号
     private String name; // 菜单名称

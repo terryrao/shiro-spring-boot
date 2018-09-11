@@ -58,11 +58,10 @@ public class ShiroUser implements Serializable {
             return false;
         ShiroUser other = (ShiroUser) obj;
         if (username == null) {
-            if (other.getUsername() != null)
-                return false;
-        } else if (!username.equals(other.getUsername()))
-            return false;
-        return true;
+            return other.getUsername() == null;
+        } else {
+            return username.equals(other.getUsername());
+        }
     }
 
 }

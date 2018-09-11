@@ -1,5 +1,6 @@
 package com.terryrao.shiro;
 
+import com.terryrao.shiro.cache.local.EhcacheName;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.cache.Cache;
@@ -45,7 +46,7 @@ public class ShiroUserInterceptor extends HandlerInterceptorAdapter {
         String requestUri = request.getRequestURI();
         String contextPath = request.getContextPath();
         String url = requestUri.substring(contextPath.length());
-        Cache<String, Set<String>> menusCache = getCacheManager().getCache("shiro-user-menus");
+        Cache<String, Set<String>> menusCache = getCacheManager().getCache(EhcacheName.SHIRO_USER_MENUS.getCacheKey());
         Set<String> set = menusCache.get(shiroUser.getAdminNo() +
                 Constants.CURRENT_USER_MENUS);
         boolean flag = set != null && set.contains(url);

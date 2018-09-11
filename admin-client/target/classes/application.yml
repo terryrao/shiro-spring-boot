@@ -1,0 +1,58 @@
+spring:
+  application:
+    name: admin
+  freemarker:
+    charset: utf-8
+    settings:
+      date_format : yyyy-MM-dd
+      time_format : HH:mm:ss
+      datetime_format : yyyy-MM-dd HH:mm:ss
+      boolean_format : true,false
+      number_format: 0.######
+      whitespace_stripping : true
+    suffix: .ftl
+  session:
+    store-type: none
+  datasource: #数据库
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/adm?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    password: 123456
+    username: root
+    druid:
+      initial-size: 1
+      min-idle: 1
+      max-active: 50
+      max-wait: 6000
+      time-between-connect-error-millis: 60000 #配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      min-evictable-idle-time-millis: 300000  # 配置一个连接在池中最小生存的时间，单位是毫秒
+      validation-query: select 'x'
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      pool-prepared-statements: true
+      max-pool-prepared-statement-per-connection-size: 20
+      filters: stat
+  cache:
+    ehcache:
+      config: ehcache.xml
+
+
+
+server:
+  port: 8001
+tx:
+  session:
+    redis:
+      database: 0
+      host: localhost
+      port: 6379
+      password: 123456
+      timeout: 6000
+  shiro:
+    cache: ehcache
+
+
+
+
+
+
