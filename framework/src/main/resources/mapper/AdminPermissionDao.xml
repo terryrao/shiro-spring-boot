@@ -24,15 +24,11 @@
    	where permission_no=#{permissionNo,jdbcType=CHAR}
    	
   </select>
-  <select id="getList" parameterType="com.terryrao.admin.model.AdminPermission" resultMap="BaseResultMap">
+  <select id="list" parameterType="com.terryrao.admin.model.AdminPermission" resultMap="BaseResultMap">
     select <include refid="Base_Column_List" /> from admin_permission where 1=1  and status='QY'
     	<if test="code != null"> and code = #{code,jdbcType=VARCHAR}</if>
      order by parent_id asc,  sort asc
   </select>
-  <select id="getList_Count" parameterType="com.terryrao.admin.model.AdminPermission" resultType="java.lang.Integer">
-    select count(ID) from admin_permission where 1=1  and status='QY'  and status='QY'
-       	<if test="code != null"> and code = #{code,jdbcType=VARCHAR}</if>
-  </select>  
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
     delete FROM admin_permission 
    	where permission_no=#{permissionNo,jdbcType=CHAR}
@@ -66,7 +62,7 @@
     	<if test="type != null">#{type,jdbcType=INTEGER},</if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.terryrao.admin.model.AdminPermission" >
+  <update id="update" parameterType="com.terryrao.admin.model.AdminPermission" >
     update admin_permission 
     <set>
     	<if test="id != null">id=#{id,jdbcType=INTEGER},</if>

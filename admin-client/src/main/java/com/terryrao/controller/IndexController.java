@@ -27,7 +27,7 @@ public class IndexController extends BasicController {
 
     @RequestMapping(value = {"/"}, method = {RequestMethod.GET})
     public String toIdx() {
-        return "index";
+        return "redirect:/index";
     }
 
     @RequestMapping(value = {"/index"}, method = {RequestMethod.GET})

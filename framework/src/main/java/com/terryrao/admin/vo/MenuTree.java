@@ -49,7 +49,7 @@ public class MenuTree implements Serializable {
         parents.forEach(parent -> {
             MenuTree node = new MenuTree();
             node.setFlag(0);
-            node.setModel(model);
+            node.setModel(parent);
             root.getChildren().add(node);
             appendChild(node, children);
         });
@@ -70,10 +70,10 @@ public class MenuTree implements Serializable {
         int flag = node.getFlag();
         if (!CollectionUtils.isEmpty(children)) {
             children.forEach(child -> {
-                String parentId = model.getParentId();
+                String parentId = child.getParentId();
                 if (parentId.equals(systemId)) {
                     MenuTree childTree = new MenuTree();
-                    childTree.setModel(model);
+                    childTree.setModel(child);
                     childTree.setFlag(flag + 1);
                     int temp = flag + 1;
                     if (temp > this.getDepth())
