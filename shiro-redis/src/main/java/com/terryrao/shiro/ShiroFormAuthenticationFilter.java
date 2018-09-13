@@ -1,7 +1,7 @@
 package com.terryrao.shiro;
 
-import com.terry.admin.model.AdminLoginLog;
-import com.terry.admin.util.IpUtils;
+import com.terryrao.admin.model.AdminLoginLog;
+import com.terryrao.admin.util.IpUtils;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;

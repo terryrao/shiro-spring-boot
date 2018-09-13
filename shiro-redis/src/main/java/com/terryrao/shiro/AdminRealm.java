@@ -3,9 +3,9 @@ package com.terryrao.shiro;
 
 import com.google.common.collect.Sets;
 import com.octo.captcha.service.image.ImageCaptchaService;
-import com.terry.admin.enums.UserStatus;
-import com.terry.admin.model.AdminPermission;
-import com.terry.admin.model.AdminUser;
+import com.terryrao.admin.enums.UserStatus;
+import com.terryrao.admin.model.AdminPermission;
+import com.terryrao.admin.model.AdminUser;
 import com.terryrao.shiro.cache.local.EhcacheName;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.shiro.SecurityUtils;

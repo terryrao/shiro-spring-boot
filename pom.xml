@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.terryrao</groupId>
     <artifactId>shiro-spring-boot-aggregator</artifactId>
-    <version>${revision}</version>
+    <version>1.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>shiro spring boot build</description>
 
@@ -15,10 +15,10 @@
     </properties>
 
     <modules>
-        <module>shiro-redis</module>
-        <module>shiro-spring-dependencies</module>
-        <module>framework</module>
-        <module>admin-client</module>
+        <module>./shiro-redis</module>
+        <module>./shiro-spring-dependencies</module>
+        <module>./framework</module>
+        <module>./admin-client</module>
     </modules>
 
 

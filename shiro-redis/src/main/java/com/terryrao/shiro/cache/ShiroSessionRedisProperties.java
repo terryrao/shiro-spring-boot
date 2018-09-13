@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
-@ConfigurationProperties(prefix = "tx.session.redis")
+@ConfigurationProperties(prefix = "tr.session.redis")
 @Setter
 @Getter
 @ToString

@@ -1,9 +1,9 @@
 package com.terryrao.shiro;
 
 
-import com.terry.admin.model.AdminLoginLog;
-import com.terry.admin.model.AdminPermission;
-import com.terry.admin.model.AdminUser;
+import com.terryrao.admin.model.AdminLoginLog;
+import com.terryrao.admin.model.AdminPermission;
+import com.terryrao.admin.model.AdminUser;
 
 import java.util.List;
 

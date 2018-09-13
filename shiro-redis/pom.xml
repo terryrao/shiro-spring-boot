@@ -6,6 +6,7 @@
         <groupId>com.terryrao</groupId>
         <artifactId>shiro-spring-dependencies</artifactId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../shiro-spring-dependencies</relativePath>
     </parent>
     <artifactId>shiro-redis</artifactId>
     <packaging>jar</packaging>

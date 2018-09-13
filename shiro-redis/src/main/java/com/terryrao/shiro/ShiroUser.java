@@ -2,7 +2,7 @@ package com.terryrao.shiro;
 
 
 import com.google.common.base.Objects;
-import com.terry.admin.model.AdminUser;
+import com.terryrao.admin.model.AdminUser;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

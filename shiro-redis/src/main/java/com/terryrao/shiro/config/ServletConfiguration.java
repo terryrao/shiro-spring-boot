@@ -22,7 +22,7 @@ public class ServletConfiguration extends SpringBootServletInitializer {
 
     @Bean
     public ServletRegistrationBean jcaptchaServletRegistration() {
-        return new ServletRegistrationBean<>(jcaptchaServlet(), "/txjcaptcha.svl");
+        return new ServletRegistrationBean<>(jcaptchaServlet(), "/jcaptcha.svl");
 
     }
 

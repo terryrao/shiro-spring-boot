@@ -1,12 +1,12 @@
 package com.terryrao.shiro.config;
 
-import com.terry.admin.model.AdminLoginLog;
-import com.terry.admin.model.AdminPermission;
-import com.terry.admin.model.AdminUser;
-import com.terry.admin.service.AdminLoginLogService;
-import com.terry.admin.service.AdminPermissionService;
-import com.terry.admin.service.AdminRoleService;
-import com.terry.admin.service.AdminUserService;
+import com.terryrao.admin.model.AdminLoginLog;
+import com.terryrao.admin.model.AdminPermission;
+import com.terryrao.admin.model.AdminUser;
+import com.terryrao.admin.service.AdminLoginLogService;
+import com.terryrao.admin.service.AdminPermissionService;
+import com.terryrao.admin.service.AdminRoleService;
+import com.terryrao.admin.service.AdminUserService;
 import com.terryrao.shiro.AdminLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

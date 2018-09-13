@@ -1,12 +1,11 @@
 package com.terryrao.shiro;
 
-import com.terry.admin.util.SpringUtils;
+import com.terryrao.admin.util.SpringUtils;
 import org.apache.shiro.cache.CacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 /**
  * shiro 拦截器

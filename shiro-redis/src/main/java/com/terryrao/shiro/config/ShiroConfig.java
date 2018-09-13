@@ -44,7 +44,7 @@ import java.util.Map;
  * shiro 配置相关
  */
 @Configuration
-@ConditionalOnClass({SecurityManager.class, AuthorizingRealm.class})
+//@ConditionalOnClass({SecurityManager.class, AuthorizingRealm.class})
 @EnableConfigurationProperties(ShiroProperties.class)
 @AutoConfigureAfter({EhCacheCacheConfig.class, RedisSessionConfig.class})
 @Import(ShiroInterceptorConfig.class)
@@ -196,13 +196,15 @@ public class ShiroConfig {
     private Map<String, String> getFilterChainDefinitions() {
         Map<String, String> filters = new LinkedHashMap<>();
         filters.put("/css/**", "anon");
+        filters.put("/h-ui/**", "anon");
+        filters.put("/h-ui.admin/**", "anon");
         filters.put("/skin/**", "anon");
         filters.put("/images/**", "anon");
         filters.put("/api/**", "anon");
         filters.put("/js/**", "anon");
         filters.put("/lib/**", "anon");
         filters.put("/favicon.ico", "anon");
-        filters.put("/txjcaptcha.svl", "anon");
+        filters.put("/jcaptcha.svl", "anon");
         filters.put("/org/agreement/**", "anon");
         filters.put("/repayment/settle-advice*", "anon");
         filters.put("/repayment/mediacy-advice*", "anon");

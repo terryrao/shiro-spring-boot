@@ -11,11 +11,13 @@ spring:
       number_format: 0.######
       whitespace_stripping : true
     suffix: .ftl
+    content-type: text/html
+    request-context-attribute: tt
   session:
     store-type: none
   datasource: #数据库
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1/adm?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
+    url: jdbc:mysql://172.15.105.103/roow?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true
     password: 123456
     username: root
     druid:
@@ -40,7 +42,7 @@ spring:
 
 server:
   port: 8001
-tx:
+tr:
   session:
     redis:
       database: 0
@@ -50,7 +52,17 @@ tx:
       timeout: 6000
   shiro:
     cache: ehcache
-
+  captcha:
+    random-word: abcdefghijkmnpqrstuvwxyz0123456789
+    b: 200 # blue
+    r: 100 # red
+    g: 120  # green
+    max-accepted-word-length: 5
+    min-accepted-word-length: 5
+mybatis:
+  config-location: classpath:/mybatis-config.xml
+  executor-type: simple
+  mapper-locations: classpath*:/mapper/**/*Dao.xml
 
 
 

@@ -1,7 +1,7 @@
 package com.terryrao.shiro;
 
-import com.terry.admin.enums.UserStatus;
-import com.terry.admin.model.AdminUser;
+import com.terryrao.admin.enums.UserStatus;
+import com.terryrao.admin.model.AdminUser;
 import com.terryrao.shiro.cache.local.EhcacheName;
 import com.terryrao.shiro.constant.Constants;
 import org.apache.commons.codec.digest.DigestUtils;

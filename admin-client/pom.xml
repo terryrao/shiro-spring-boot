@@ -6,6 +6,7 @@
         <artifactId>shiro-spring-dependencies</artifactId>
         <groupId>com.terryrao</groupId>
         <version>1.0.0-SNAPSHOT</version>
+        <relativePath>../shiro-spring-dependencies</relativePath>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

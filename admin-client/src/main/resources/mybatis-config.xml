@@ -14,7 +14,6 @@
         <!--&lt;!&ndash; Allows JDBC support for generated keys. A compatible driver is required.-->
         <!--This setting forces generated keys to be used if set to true,-->
          <!--as some drivers deny compatibility but still work &ndash;&gt;-->
-        <!--<setting name="useGeneratedKeys" value="true"/>-->
     <!--</settings>-->
 
     <!-- Continue going here -->

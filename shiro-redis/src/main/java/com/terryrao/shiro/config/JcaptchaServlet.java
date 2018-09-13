@@ -9,7 +9,7 @@ package com.terryrao.shiro.config;
 
 import com.octo.captcha.service.CaptchaServiceException;
 import com.octo.captcha.service.image.ImageCaptchaService;
-import com.terry.admin.util.SpringUtils;
+import com.terryrao.admin.util.SpringUtils;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletOutputStream;

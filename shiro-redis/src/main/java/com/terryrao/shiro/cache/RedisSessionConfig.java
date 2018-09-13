@@ -20,7 +20,7 @@ import java.io.Serializable;
 @Configuration
 @EnableConfigurationProperties(ShiroSessionRedisProperties.class)
 // ShiroCache.java
-@ConditionalOnProperty(name = "tx.shiro.cache", havingValue = "redis")
+@ConditionalOnProperty(name = "tr.shiro.cache", havingValue = "redis")
 public class RedisSessionConfig {
 
     private Logger log = LoggerFactory.getLogger(this.getClass());

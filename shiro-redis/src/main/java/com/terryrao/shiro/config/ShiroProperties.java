@@ -6,7 +6,7 @@ import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 
-@ConfigurationProperties(prefix = "tx.shiro",
+@ConfigurationProperties(prefix = "tr.shiro",
         ignoreUnknownFields = false/*有属性不能匹配到声明的域的时候抛出异常 */)
 @Setter
 @Getter
