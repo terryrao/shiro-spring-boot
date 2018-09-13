@@ -1,8 +1,8 @@
 package com.terryrao.controller;
 
 
-import com.octo.captcha.CaptchaException;
 import com.terryrao.admin.basic.BasicController;
+import com.terryrao.shiro.CaptchaException;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.ExcessiveAttemptsException;

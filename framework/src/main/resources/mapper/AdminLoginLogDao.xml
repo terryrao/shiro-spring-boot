@@ -34,7 +34,7 @@
     delete FROM admin_login_log 
    	where admin_no=#{adminNo,jdbcType=CHAR}
   </delete>
-  <insert id="insertByPrimaryKey" parameterType="com.terryrao.admin.model.AdminLoginLog" >
+  <insert id="add" parameterType="com.terryrao.admin.model.AdminLoginLog" >
     insert into admin_login_log
     <trim prefix="(" suffix=")" suffixOverrides="," >
     	<if test="id != null">id,</if>
@@ -61,7 +61,7 @@
     	<if test="remark != null">#{remark,jdbcType=VARCHAR},</if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKey" parameterType="com.terryrao.admin.model.AdminLoginLog" >
+  <update id="update" parameterType="com.terryrao.admin.model.AdminLoginLog" >
     update admin_login_log 
     <set>
     	<if test="id != null">id=#{id,jdbcType=INTEGER},</if>

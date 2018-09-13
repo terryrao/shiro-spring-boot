@@ -134,7 +134,7 @@ public class AdminRealm extends AuthorizingRealm {
      * 清除目录缓存
      */
     public void cleanMenuCache(PrincipalCollection principals) {
-        Cache<String, Set<String>> menusCache = getCacheManager().getCache("shiro-user-menus");
+        Cache<String, Set<String>> menusCache = getCacheManager().getCache(EhcacheName.SHIRO_USER_MENUS.getCacheKey());
         ShiroUser shiro = (ShiroUser) principals.getPrimaryPrincipal();
         menusCache.remove(shiro.getAdminNo() + Constants.CURRENT_USER_MENUS);
     }
@@ -144,7 +144,7 @@ public class AdminRealm extends AuthorizingRealm {
      */
     public void cleanAdminCache(PrincipalCollection principals) {
         ShiroUser shiro = (ShiroUser) principals.getPrimaryPrincipal();
-        Cache<String, AdminUser> userCache = getCacheManager().getCache("shiro-user");
+        Cache<String, AdminUser> userCache = getCacheManager().getCache(EhcacheName.SHIRO_USER.getCacheKey());
         userCache.remove(shiro.getAdminNo() + Constants.CURRENT_USER);
 
     }

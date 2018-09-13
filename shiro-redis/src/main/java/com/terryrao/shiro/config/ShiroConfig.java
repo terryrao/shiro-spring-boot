@@ -5,6 +5,7 @@ import com.terryrao.shiro.*;
 import com.terryrao.shiro.cache.RedisSessionConfig;
 import com.terryrao.shiro.cache.ShiroSessionDao;
 import com.terryrao.shiro.cache.local.EhCacheCacheConfig;
+import com.terryrao.shiro.cache.local.EhcacheName;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
 import org.apache.shiro.cache.CacheManager;
@@ -52,11 +53,12 @@ public class ShiroConfig {
 
 
     @Bean(name = "credentialsMatcher")
-    public RetryLimitHashedCredentialsMatcher getCredentialsMatcher() {
+    public RetryLimitHashedCredentialsMatcher getCredentialsMatcher(CacheManager cacheManager) {
         RetryLimitHashedCredentialsMatcher matcher = new RetryLimitHashedCredentialsMatcher();
         matcher.setHashAlgorithmName("md5"); //加密方式
         matcher.setHashIterations(2);//加密次数
         matcher.setStoredCredentialsHexEncoded(true); //十六进制编码
+        matcher.setCacheManager(cacheManager);
         return matcher;
     }
 
@@ -68,7 +70,7 @@ public class ShiroConfig {
         realm.setCredentialsMatcher(credentialsMatcher);
         realm.setCachingEnabled(true);
         realm.setAuthorizationCachingEnabled(true);
-        realm.setAuthorizationCacheName("authorizationCache");
+        realm.setAuthorizationCacheName(EhcacheName.AUTHORIZATION_CACHE.getCacheKey());
         return realm;
     }
 

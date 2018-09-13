@@ -1,5 +1,6 @@
 package com.terryrao.shiro.cache;
 
+import com.terryrao.shiro.cache.local.EhcacheName;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.UnknownSessionException;
 import org.apache.shiro.session.mgt.eis.CachingSessionDAO;
@@ -21,7 +22,7 @@ public class ShiroSessionDao extends CachingSessionDAO {
 
     private Logger logger = LoggerFactory.getLogger(this.getClass());
     // 保存到Redis中key的前缀 prefix+sessionId
-    public static final String SESSION_PREFIX = "shiro-activeSessionCache";
+    public static final String SESSION_PREFIX = EhcacheName.SHIRO_ACTIVE_SESSION_CACHE.getCacheKey();
 
     // 设置内存会话的过期时间
     private static final long DEFAULT_SESSION_IN_MEMORY_TIMEOUT = 1000L;

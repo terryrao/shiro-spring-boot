@@ -19,6 +19,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
+import java.util.Optional;
 
 import static com.terryrao.shiro.constant.Constants.ERROR_LOGIN_LIMIT;
 
@@ -41,7 +42,8 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         //禁用用户
         AdminUser sysAdminInDb = adminLoginService.findByName(username);
         Cache<String, Integer> limitCache = getCacheManager().getCache(EhcacheName.PASSWORD_RETRY_CACHE.getCacheKey());
-        Integer count = limitCache.get(key);
+        Integer cacheHasTries = limitCache.get(key);
+        Integer count = cacheHasTries == null ? 0 : cacheHasTries;
         String adminNo = sysAdminInDb.getAdminNo();
         if (ERROR_LOGIN_LIMIT > 0) {
             if (count + 1 > ERROR_LOGIN_LIMIT) {
@@ -61,11 +63,7 @@ public class RetryLimitHashedCredentialsMatcher extends HashedCredentialsMatcher
         if (matches) {
             limitCache.remove(key);
         } else {
-            try {
-                limitCache.put(key + adminNo, count + 1);
-            } catch (Exception e) {
-                logger.error("后台登录redis set key异常", e);
-            }
+            limitCache.put(key + adminNo, count + 1);
         }
         return matches;
     }
