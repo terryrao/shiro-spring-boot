@@ -1,5 +1,6 @@
 package com.terryrao.admin.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -8,9 +9,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 
-@Setter
-@Getter
-@NoArgsConstructor
+@Data
 public class AdminRole implements Serializable {
     private Long id; // 角色ID
     private String roleNo; // 角色编号

@@ -1,14 +1,13 @@
 package com.terryrao.admin.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.Date;
 
-@Setter
-@Getter
-@NoArgsConstructor
+@Data
 public class AdminLoginLog {
     private Long id; // 自增ID
     private String adminNo; // 用户编号

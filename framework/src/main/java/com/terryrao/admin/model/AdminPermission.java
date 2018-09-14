@@ -1,5 +1,6 @@
 package com.terryrao.admin.model;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,7 +8,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.Date;
 
-@Setter@Getter@NoArgsConstructor
+@Data
 public class AdminPermission implements Serializable {
     private Long id; //
     private String permissionNo; // 菜单编号

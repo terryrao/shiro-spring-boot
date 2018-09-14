@@ -4,6 +4,7 @@ package com.terryrao.admin.model;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.terryrao.admin.enums.UserStatus;
+import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,9 +12,7 @@ import lombok.Setter;
 import java.io.Serializable;
 import java.util.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 public class AdminUser implements Serializable {
 
     private Long id; // 用户id

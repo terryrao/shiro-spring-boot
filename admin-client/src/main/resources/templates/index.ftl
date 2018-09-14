@@ -35,7 +35,7 @@
 					<ul class="dropDown-menu menu radius box-shadow">
 						<li><a href="javascript:;" onClick="myselfinfo()">个人信息</a></li>
 						<li><a href="#">切换账户</a></li>
-						<li><a href="#">退出</a></li>
+						<li><a href="${tt.getContextPath()}/logout">退出</a></li>
 				</ul>
 			</li>
 				<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
@@ -68,9 +68,9 @@
 								    <#list menu.children as chMenu>
 								        <li>
 											<#if chMenu.model.url?contains("http:")>
-													<a data-href="${chMenu.model.url}"  href="javascript:void(0)" >${chMenu.model.name}</a>
+													<a data-href="${chMenu.model.url}" data-title="${chMenu.model.name}"  href="javascript:void(0)" >${chMenu.model.name}</a>
 												<#else >
-													<a data-href="${tt.getContextPath() + chMenu.model.url}"  href="javascript:void(0)">${chMenu.model.name}</a>
+													<a data-href="${tt.getContextPath() + chMenu.model.url}" data-title="${chMenu.model.name}"  href="javascript:void(0)">${chMenu.model.name}</a>
 											</#if>
 										</li>
 								    </#list>
