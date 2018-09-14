@@ -75,7 +75,7 @@
                 <version>${google.guava.version}</version>
             </dependency>
 
-            <dependency>
+         <!--   <dependency>
                 <groupId>cn.dreampie</groupId>
                 <artifactId>jfinal-shiro-freemarker</artifactId>
                 <version>0.2</version>
@@ -85,6 +85,12 @@
                         <groupId>com.google.collections</groupId>
                     </exclusion>
                 </exclusions>
+            </dependency>-->
+
+            <dependency>
+                <groupId>net.mingsoft</groupId>
+                <artifactId>shiro-freemarker-tags</artifactId>
+                <version>0.1</version>
             </dependency>
 
             <dependency>

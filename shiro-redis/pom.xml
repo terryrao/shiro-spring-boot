@@ -78,16 +78,10 @@
         </dependency>
 
         <dependency>
-            <groupId>cn.dreampie</groupId>
-            <artifactId>jfinal-shiro-freemarker</artifactId>
-            <!-- <version>0.2</version>
-             <exclusions>
-                 <exclusion>
-                     <artifactId>google-collections</artifactId>
-                     <groupId>com.google.collections</groupId>
-                 </exclusion>
-             </exclusions>-->
+            <groupId>net.mingsoft</groupId>
+            <artifactId>shiro-freemarker-tags</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>org.apache.commons</groupId>

@@ -1,6 +1,6 @@
 package com.terryrao.shiro.config;
 
-import cn.dreampie.shiro.freemarker.ShiroTags;
+import com.jagregory.shiro.freemarker.ShiroTags;
 import freemarker.template.TemplateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
