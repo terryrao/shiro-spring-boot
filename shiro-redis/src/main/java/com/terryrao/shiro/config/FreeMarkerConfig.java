@@ -24,6 +24,7 @@ public class FreeMarkerConfig {
     public void getShiroTagFreeMarkerConfigurer() throws IOException, TemplateException {
         configuration.afterPropertiesSet();
         configuration.getConfiguration().setSharedVariable("shiro", new ShiroTags());
+        // warning : 请求里给变量取名的时候不需要使用 shiro 否则会覆盖此声明，导致模板渲染错误
 
         /*Map<String,Object> variables = new HashMap<>();
         variables.put("xml_escape",new XmlEscape());

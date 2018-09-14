@@ -36,7 +36,7 @@ public class IndexController extends BasicController {
             ShiroUser shiroUser = (ShiroUser) SecurityUtils.getSubject().getPrincipal();
             String roleId = shiroUser.getRoleId() == null ? "" : shiroUser.getRoleId();
             MenuTree tree = permissionService.listAllByRoleId(roleId);
-            model.addAttribute("shiro", shiroUser);
+//            model.addAttribute("shiro", shiroUser);
             model.addAttribute("tree", tree);
             model.addAttribute("simple", shiroUser.isSimple() ? 1 : 0);
             shiroUser.setSimple(false);
