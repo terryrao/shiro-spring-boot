@@ -60,9 +60,15 @@ tr:
     max-accepted-word-length: 5
     min-accepted-word-length: 5
 mybatis:
-  config-location: classpath:/mybatis-config.xml
+  #config-location: classpath:/mybatis-config.xml
   executor-type: simple
   mapper-locations: classpath*:/mapper/**/*Dao.xml
+pagehelper:
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
+  helper-dialect: mysql
+
 
 
 

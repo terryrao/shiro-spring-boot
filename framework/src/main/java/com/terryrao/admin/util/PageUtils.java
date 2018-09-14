@@ -2,6 +2,7 @@ package com.terryrao.admin.util;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import org.apache.commons.lang3.StringUtils;
 
 public class PageUtils {
 
@@ -22,6 +23,24 @@ public class PageUtils {
             return PageHelper.startPage(page.getPageNum(), page.getPageSize())
                     .doSelectPage(() -> supplier.get(condition));
         }
+    }
+
+
+    public static <T> Page<T> newPage(String pageNo,String pageSize) {
+        if (StringUtils.isBlank(pageNo)) {
+            pageNo = "1";
+        }
+        if (StringUtils.isBlank(pageSize)) {
+            pageSize = "15";
+        }
+        return newPage(Integer.valueOf(pageNo),Integer.valueOf(pageSize));
+    }
+
+    public static <T> Page<T> newPage(Integer pageNo,Integer pageSize) {
+        Page<T> page = new Page<>();
+        page.setPageSize(pageSize);
+        page.setPageNum(pageNo);
+        return page;
     }
 
 }
